@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "locations",
+  "info": {
+    "singularName": "location",
+    "pluralName": "locations",
+    "displayName": "location",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "alias": {
+      "type": "text"
+    },
+    "arabic_name": {
+      "type": "text"
+    },
+    "avm_status": {
+      "type": "integer"
+    },
+    "emirate": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "float"
+    },
+    "longitude": {
+      "type": "float"
+    },
+    "location_id": {
+      "type": "biginteger"
+    },
+    "master_development": {
+      "type": "text"
+    },
+    "name": {
+      "type": "text"
+    },
+    "sub_location_1": {
+      "type": "text"
+    },
+    "sub_location_2": {
+      "type": "text"
+    },
+    "sub_location_3": {
+      "type": "text"
+    },
+    "sub_location_4": {
+      "type": "text"
+    },
+    "sub_location_5": {
+      "type": "text"
+    },
+    "sub_title": {
+      "type": "text"
+    }
+  }
+}

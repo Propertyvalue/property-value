@@ -1,0 +1,102 @@
+{
+  "kind": "collectionType",
+  "collectionName": "units",
+  "info": {
+    "singularName": "unit",
+    "pluralName": "units",
+    "displayName": "unit",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "arabic_community": {
+      "type": "text"
+    },
+    "bathrooms": {
+      "type": "string"
+    },
+    "bedrooms": {
+      "type": "string"
+    },
+    "built_up_area_sqft": {
+      "type": "string"
+    },
+    "built_up_area_sqm": {
+      "type": "string"
+    },
+    "developer_name": {
+      "type": "text"
+    },
+    "emirate": {
+      "type": "string"
+    },
+    "floor": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "float"
+    },
+    "longitude": {
+      "type": "float"
+    },
+    "location_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::location.location"
+    },
+    "master_development": {
+      "type": "text"
+    },
+    "no_of_parking": {
+      "type": "string"
+    },
+    "parking": {
+      "type": "text"
+    },
+    "plot_size_sqft": {
+      "type": "string"
+    },
+    "plot_size_sqm": {
+      "type": "string"
+    },
+    "property_id": {
+      "type": "biginteger"
+    },
+    "property_new_address": {
+      "type": "text"
+    },
+    "property_type_id": {
+      "type": "biginteger"
+    },
+    "ref_location_id": {
+      "type": "biginteger"
+    },
+    "sub_location_1": {
+      "type": "text"
+    },
+    "sub_location_2": {
+      "type": "text"
+    },
+    "sub_location_3": {
+      "type": "text"
+    },
+    "sub_location_4": {
+      "type": "text"
+    },
+    "sub_title": {
+      "type": "string"
+    },
+    "total_service_charges": {
+      "type": "string"
+    },
+    "unit_number": {
+      "type": "string"
+    },
+    "views": {
+      "type": "string"
+    }
+  }
+}
