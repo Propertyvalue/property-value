@@ -362,6 +362,106 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiLocationLocation extends Schema.CollectionType {
+  collectionName: 'locations';
+  info: {
+    singularName: 'location';
+    pluralName: 'locations';
+    displayName: 'location';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    alias: Attribute.Text;
+    arabic_name: Attribute.Text;
+    avm_status: Attribute.Integer;
+    emirate: Attribute.String;
+    latitude: Attribute.Float;
+    longitude: Attribute.Float;
+    location_id: Attribute.BigInteger & Attribute.Required & Attribute.Unique;
+    master_development: Attribute.Text;
+    name: Attribute.Text;
+    sub_location_1: Attribute.Text;
+    sub_location_2: Attribute.Text;
+    sub_location_3: Attribute.Text;
+    sub_location_4: Attribute.Text;
+    sub_location_5: Attribute.Text;
+    sub_title: Attribute.Text;
+    units: Attribute.Relation<
+      'api::location.location',
+      'oneToMany',
+      'api::unit.unit'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::location.location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::location.location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUnitUnit extends Schema.CollectionType {
+  collectionName: 'units';
+  info: {
+    singularName: 'unit';
+    pluralName: 'units';
+    displayName: 'unit';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    arabic_community: Attribute.Text;
+    bathrooms: Attribute.String;
+    bedrooms: Attribute.String;
+    built_up_area_sqft: Attribute.String;
+    built_up_area_sqm: Attribute.String;
+    developer_name: Attribute.Text;
+    emirate: Attribute.String;
+    floor: Attribute.String;
+    latitude: Attribute.Float;
+    longitude: Attribute.Float;
+    master_development: Attribute.Text;
+    no_of_parking: Attribute.String;
+    parking: Attribute.Text;
+    plot_size_sqft: Attribute.String;
+    plot_size_sqm: Attribute.String;
+    property_id: Attribute.BigInteger;
+    property_new_address: Attribute.Text;
+    property_type_id: Attribute.BigInteger;
+    sub_location_1: Attribute.Text;
+    sub_location_2: Attribute.Text;
+    sub_location_3: Attribute.Text;
+    sub_location_4: Attribute.Text;
+    sub_title: Attribute.String;
+    total_service_charges: Attribute.String;
+    unit_number: Attribute.String;
+    views: Attribute.String;
+    location_id: Attribute.BigInteger;
+    ref_location_id: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::unit.unit', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::unit.unit', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -768,105 +868,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiLocationLocation extends Schema.CollectionType {
-  collectionName: 'locations';
-  info: {
-    singularName: 'location';
-    pluralName: 'locations';
-    displayName: 'location';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    alias: Attribute.Text;
-    arabic_name: Attribute.Text;
-    avm_status: Attribute.Integer;
-    emirate: Attribute.String;
-    latitude: Attribute.Float;
-    longitude: Attribute.Float;
-    location_id: Attribute.BigInteger;
-    master_development: Attribute.Text;
-    name: Attribute.Text;
-    sub_location_1: Attribute.Text;
-    sub_location_2: Attribute.Text;
-    sub_location_3: Attribute.Text;
-    sub_location_4: Attribute.Text;
-    sub_location_5: Attribute.Text;
-    sub_title: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::location.location',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::location.location',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiUnitUnit extends Schema.CollectionType {
-  collectionName: 'units';
-  info: {
-    singularName: 'unit';
-    pluralName: 'units';
-    displayName: 'unit';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    arabic_community: Attribute.Text;
-    bathrooms: Attribute.String;
-    bedrooms: Attribute.String;
-    built_up_area_sqft: Attribute.String;
-    built_up_area_sqm: Attribute.String;
-    developer_name: Attribute.Text;
-    emirate: Attribute.String;
-    floor: Attribute.String;
-    latitude: Attribute.Float;
-    longitude: Attribute.Float;
-    location_id: Attribute.Relation<
-      'api::unit.unit',
-      'oneToOne',
-      'api::location.location'
-    >;
-    master_development: Attribute.Text;
-    no_of_parking: Attribute.String;
-    parking: Attribute.Text;
-    plot_size_sqft: Attribute.String;
-    plot_size_sqm: Attribute.String;
-    property_id: Attribute.BigInteger;
-    property_new_address: Attribute.Text;
-    property_type_id: Attribute.BigInteger;
-    ref_location_id: Attribute.BigInteger;
-    sub_location_1: Attribute.Text;
-    sub_location_2: Attribute.Text;
-    sub_location_3: Attribute.Text;
-    sub_location_4: Attribute.Text;
-    sub_title: Attribute.String;
-    total_service_charges: Attribute.String;
-    unit_number: Attribute.String;
-    views: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::unit.unit', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::unit.unit', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -877,6 +878,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::location.location': ApiLocationLocation;
+      'api::unit.unit': ApiUnitUnit;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -885,8 +888,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::location.location': ApiLocationLocation;
-      'api::unit.unit': ApiUnitUnit;
     }
   }
 }

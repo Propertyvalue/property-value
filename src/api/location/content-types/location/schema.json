@@ -31,7 +31,9 @@
       "type": "float"
     },
     "location_id": {
-      "type": "biginteger"
+      "type": "biginteger",
+      "unique": true,
+      "required": true
     },
     "master_development": {
       "type": "text"
@@ -56,6 +58,11 @@
     },
     "sub_title": {
       "type": "text"
+    },
+    "units": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::unit.unit"
     }
   }
 }

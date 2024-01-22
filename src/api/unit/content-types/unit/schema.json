@@ -42,11 +42,6 @@
     "longitude": {
       "type": "float"
     },
-    "location_id": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::location.location"
-    },
     "master_development": {
       "type": "text"
     },
@@ -69,9 +64,6 @@
       "type": "text"
     },
     "property_type_id": {
-      "type": "biginteger"
-    },
-    "ref_location_id": {
       "type": "biginteger"
     },
     "sub_location_1": {
@@ -97,6 +89,12 @@
     },
     "views": {
       "type": "string"
+    },
+    "location_id": {
+      "type": "biginteger"
+    },
+    "ref_location_id": {
+      "type": "biginteger"
     }
   }
 }
