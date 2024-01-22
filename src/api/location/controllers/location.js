@@ -15,7 +15,7 @@ module.exports = createCoreController(
         const query = queryParams.get("q");
         const locations = await strapi.db
           .query("api::location.location")
-          .findWithCount({ _q: query });
+          .findMany({ _q: query, limit: 50 });
         ctx.send({ success: true, data: locations });
       } catch (error) {
         // Handle errors
