@@ -1,0 +1,12 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "public.ecr.aws/y6r9c7x2/strapi-repro:latest",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "1337"
+    }
+  ]
+}
