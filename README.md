@@ -32,24 +32,62 @@ npm run build
 yarn build
 ```
 
-## ⚙️ Deployment
+# API.propertyvalue.ae Documentation
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+Welcome to the documentation for API.propertyvalue.ae. This API provides information about property locations and units. Currently, two main routes are available: `/locations` and `/units`.
 
-## 📚 Learn more
+## Authorization
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+To access the API, you need to include an authorization header with a bearer token. Use the following token:
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+```plaintext
+Bearer api-token 
+```
 
-## ✨ Community
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+## Locations
+### `Get all locations`
 
----
+To retrieve information about all locations, send a GET request to /locations.
+
+Example:
+```plaintext
+curl -H "Authorization: Bearer api-token" https://api.propertyvalue.ae/locations
+```
+
+### `Get a specific location by ID`
+To retrieve information about a specific location, replace :location_id with the desired location ID and send a GET request to /location/:location_id.
+
+Example:
+```plaintext
+curl -H "Authorization: Bearer api-token" https://api.propertyvalue.ae/location/:location_id
+```
+
+### `Search or filter locations`
+
+To search or filter locations, add the query parameter q with the filter criteria to the /locations endpoint.
+
+```plaintext
+curl -H "Authorization: Bearer api-token" https://api.propertyvalue.ae/locations?q="filter_criteria"
+```
+
+## Units
+
+### `Get all units`
+
+To retrieve information about all units, send a GET request to /units.
+
+Example:
+```plaintext
+curl -H "Authorization: Bearer api-token" https://api.propertyvalue.ae/units
+```
+
+### `Get units by location ID`
+To retrieve information about units based on a specific location ID, replace :location_id with the desired location ID and send a GET request to /units/:location_id.
+
+```plaintext
+curl -H "Authorization: Bearer api-token" https://api.propertyvalue.ae/units/:location_id
+```
+
+## `Conclusion`
+This documentation provides basic information on how to interact with the API.propertyvalue.ae API. Ensure that you include the correct authorization token in the header for successful authentication. For more details or specific use cases, refer to the API documentation.
