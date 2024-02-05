@@ -768,6 +768,132 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBuildingBuilding extends Schema.CollectionType {
+  collectionName: 'buildings';
+  info: {
+    singularName: 'building';
+    pluralName: 'buildings';
+    displayName: 'Buildings';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bld_levels: Attribute.String;
+    shops: Attribute.String;
+    flats: Attribute.String;
+    offices: Attribute.String;
+    swimming_pools: Attribute.String;
+    elevators: Attribute.String;
+    actual_area: Attribute.String;
+    property_type_id: Attribute.BigInteger;
+    property_type_ar: Attribute.String;
+    property_type_en: Attribute.String;
+    property_sub_type_id: Attribute.BigInteger;
+    property_sub_type_ar: Attribute.String;
+    property_sub_type_en: Attribute.String;
+    parent_property_id: Attribute.BigInteger;
+    creation_date: Attribute.DateTime;
+    parcel_id: Attribute.BigInteger;
+    is_free_hold: Attribute.Boolean;
+    property_id: Attribute.BigInteger;
+    area_id: Attribute.BigInteger;
+    zone_id: Attribute.BigInteger;
+    area_name_ar: Attribute.String;
+    area_name_en: Attribute.String;
+    land_number: Attribute.String;
+    land_sub_number: Attribute.String;
+    building_number: Attribute.String;
+    common_area: Attribute.String;
+    actual_common_area: Attribute.String;
+    floors: Attribute.String;
+    rooms: Attribute.String;
+    rooms_ar: Attribute.String;
+    rooms_en: Attribute.String;
+    car_parks: Attribute.String;
+    built_up_area: Attribute.String;
+    is_lease_hold: Attribute.Boolean;
+    is_registered: Attribute.Boolean;
+    pre_registration_number: Attribute.String;
+    master_project_id: Attribute.BigInteger;
+    master_project_en: Attribute.String;
+    master_project_ar: Attribute.String;
+    project_id: Attribute.BigInteger;
+    project_name_ar: Attribute.String;
+    project_name_en: Attribute.String;
+    land_type_id: Attribute.BigInteger;
+    land_type_ar: Attribute.String;
+    land_type_en: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::building.building',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::building.building',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLandLand extends Schema.CollectionType {
+  collectionName: 'lands';
+  info: {
+    singularName: 'land';
+    pluralName: 'lands';
+    displayName: 'Lands';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    property_id: Attribute.BigInteger & Attribute.Unique;
+    area_id: Attribute.BigInteger & Attribute.Unique;
+    zone_id: Attribute.BigInteger & Attribute.Unique;
+    area_name_ar: Attribute.String;
+    area_name_en: Attribute.String;
+    land_number: Attribute.String;
+    land_sub_number: Attribute.String;
+    actual_area: Attribute.String;
+    property_type_id: Attribute.BigInteger & Attribute.Unique;
+    property_type_ar: Attribute.String;
+    property_type_en: Attribute.String;
+    property_sub_type_id: Attribute.BigInteger;
+    property_sub_type_ar: Attribute.String;
+    property_sub_type_en: Attribute.String;
+    munc_zip_code: Attribute.String;
+    munc_number: Attribute.String;
+    parcel_id: Attribute.BigInteger;
+    is_free_hold: Attribute.Boolean;
+    is_registered: Attribute.Boolean;
+    pre_registration_number: Attribute.String;
+    separated_from: Attribute.String;
+    separated_reference: Attribute.String;
+    project_id: Attribute.BigInteger;
+    project_name_ar: Attribute.String;
+    project_name_en: Attribute.String;
+    master_project_id: Attribute.BigInteger;
+    master_project_en: Attribute.String;
+    master_project_ar: Attribute.String;
+    land_type_id: Attribute.BigInteger;
+    land_type_ar: Attribute.String;
+    land_type_en: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::land.land', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::land.land', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLocationLocation extends Schema.CollectionType {
   collectionName: 'locations';
   info: {
@@ -811,6 +937,81 @@ export interface ApiLocationLocation extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::location.location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTransactionTransaction extends Schema.CollectionType {
+  collectionName: 'transactions';
+  info: {
+    singularName: 'transaction';
+    pluralName: 'transactions';
+    displayName: 'Transactions';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    transaction_id: Attribute.BigInteger;
+    procedure_id: Attribute.BigInteger;
+    trans_group_id: Attribute.BigInteger;
+    trans_group_ar: Attribute.String;
+    trans_group_en: Attribute.String;
+    procedure_name_ar: Attribute.String;
+    procedure_name_en: Attribute.String;
+    instance_date: Attribute.Date;
+    property_type_id: Attribute.BigInteger;
+    property_type_ar: Attribute.String;
+    property_type_en: Attribute.String;
+    property_sub_type_id: Attribute.BigInteger;
+    property_sub_type_ar: Attribute.String;
+    property_sub_type_en: Attribute.String;
+    property_usage_ar: Attribute.String;
+    property_usage_en: Attribute.String;
+    reg_type_id: Attribute.BigInteger;
+    reg_type_ar: Attribute.String;
+    reg_type_en: Attribute.String;
+    area_id: Attribute.BigInteger;
+    area_name_ar: Attribute.String;
+    area_name_en: Attribute.String;
+    building_name_ar: Attribute.String;
+    building_name_en: Attribute.String;
+    project_number: Attribute.String;
+    project_name_ar: Attribute.String;
+    project_name_en: Attribute.String;
+    master_project_en: Attribute.String;
+    master_project_ar: Attribute.String;
+    nearest_landmark_ar: Attribute.String;
+    nearest_landmark_en: Attribute.String;
+    nearest_metro_ar: Attribute.String;
+    nearest_metro_en: Attribute.String;
+    nearest_mall_ar: Attribute.String;
+    nearest_mall_en: Attribute.String;
+    rooms_ar: Attribute.String;
+    rooms_en: Attribute.String;
+    has_parking: Attribute.Boolean;
+    procedure_area: Attribute.String;
+    actual_worth: Attribute.String;
+    meter_sale_price: Attribute.String;
+    rent_value: Attribute.String;
+    meter_rent_price: Attribute.String;
+    no_of_parties_role_1: Attribute.String;
+    no_of_parties_role_2: Attribute.String;
+    no_of_parties_role_3: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::transaction.transaction',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::transaction.transaction',
       'oneToOne',
       'admin::user'
     > &
@@ -868,6 +1069,81 @@ export interface ApiUnitUnit extends Schema.CollectionType {
   };
 }
 
+export interface ApiUnitsDldUnitsDld extends Schema.CollectionType {
+  collectionName: 'units_dlds';
+  info: {
+    singularName: 'units-dld';
+    pluralName: 'units-dlds';
+    displayName: 'Units_dld';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    property_id: Attribute.BigInteger;
+    area_id: Attribute.BigInteger;
+    zone_id: Attribute.BigInteger;
+    area_name_ar: Attribute.String;
+    area_name_en: Attribute.String;
+    land_number: Attribute.String;
+    land_sub_number: Attribute.String;
+    building_number: Attribute.String;
+    unit_number: Attribute.String;
+    unit_balcony_area: Attribute.String;
+    unit_parking_number: Attribute.String;
+    parking_allocation_type: Attribute.String;
+    parking_allocation_type_ar: Attribute.String;
+    parking_allocation_type_en: Attribute.String;
+    common_area: Attribute.String;
+    actual_common_area: Attribute.String;
+    floor: Attribute.String;
+    rooms: Attribute.String;
+    rooms_ar: Attribute.String;
+    rooms_en: Attribute.String;
+    actual_area: Attribute.String;
+    property_type_id: Attribute.BigInteger;
+    property_type_ar: Attribute.String;
+    property_type_en: Attribute.String;
+    property_sub_type_id: Attribute.BigInteger;
+    property_sub_type_ar: Attribute.String;
+    property_sub_type_en: Attribute.String;
+    parent_property_id: Attribute.BigInteger;
+    grandparent_property_id: Attribute.BigInteger;
+    creation_date: Attribute.DateTime;
+    munc_zip_code: Attribute.String;
+    munc_number: Attribute.String;
+    parcel_id: Attribute.BigInteger;
+    is_free_hold: Attribute.Boolean;
+    is_lease_hold: Attribute.Boolean;
+    is_registered: Attribute.Boolean;
+    pre_registration_number: Attribute.String;
+    master_project_id: Attribute.BigInteger;
+    master_project_en: Attribute.String;
+    master_project_ar: Attribute.String;
+    project_id: Attribute.BigInteger;
+    project_name_ar: Attribute.String;
+    project_name_en: Attribute.String;
+    land_type_id: Attribute.BigInteger;
+    land_type_ar: Attribute.String;
+    land_type_en: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::units-dld.units-dld',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::units-dld.units-dld',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -886,8 +1162,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::building.building': ApiBuildingBuilding;
+      'api::land.land': ApiLandLand;
       'api::location.location': ApiLocationLocation;
+      'api::transaction.transaction': ApiTransactionTransaction;
       'api::unit.unit': ApiUnitUnit;
+      'api::units-dld.units-dld': ApiUnitsDldUnitsDld;
     }
   }
 }

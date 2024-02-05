@@ -1,0 +1,153 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transactions",
+  "info": {
+    "singularName": "transaction",
+    "pluralName": "transactions",
+    "displayName": "Transactions"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "transaction_id": {
+      "type": "biginteger"
+    },
+    "procedure_id": {
+      "type": "biginteger"
+    },
+    "trans_group_id": {
+      "type": "biginteger"
+    },
+    "trans_group_ar": {
+      "type": "string"
+    },
+    "trans_group_en": {
+      "type": "string"
+    },
+    "procedure_name_ar": {
+      "type": "string"
+    },
+    "procedure_name_en": {
+      "type": "string"
+    },
+    "instance_date": {
+      "type": "date"
+    },
+    "property_type_id": {
+      "type": "biginteger"
+    },
+    "property_type_ar": {
+      "type": "string"
+    },
+    "property_type_en": {
+      "type": "string"
+    },
+    "property_sub_type_id": {
+      "type": "biginteger"
+    },
+    "property_sub_type_ar": {
+      "type": "string"
+    },
+    "property_sub_type_en": {
+      "type": "string"
+    },
+    "property_usage_ar": {
+      "type": "string"
+    },
+    "property_usage_en": {
+      "type": "string"
+    },
+    "reg_type_id": {
+      "type": "biginteger"
+    },
+    "reg_type_ar": {
+      "type": "string"
+    },
+    "reg_type_en": {
+      "type": "string"
+    },
+    "area_id": {
+      "type": "biginteger"
+    },
+    "area_name_ar": {
+      "type": "string"
+    },
+    "area_name_en": {
+      "type": "string"
+    },
+    "building_name_ar": {
+      "type": "string"
+    },
+    "building_name_en": {
+      "type": "string"
+    },
+    "project_number": {
+      "type": "string"
+    },
+    "project_name_ar": {
+      "type": "string"
+    },
+    "project_name_en": {
+      "type": "string"
+    },
+    "master_project_en": {
+      "type": "string"
+    },
+    "master_project_ar": {
+      "type": "string"
+    },
+    "nearest_landmark_ar": {
+      "type": "string"
+    },
+    "nearest_landmark_en": {
+      "type": "string"
+    },
+    "nearest_metro_ar": {
+      "type": "string"
+    },
+    "nearest_metro_en": {
+      "type": "string"
+    },
+    "nearest_mall_ar": {
+      "type": "string"
+    },
+    "nearest_mall_en": {
+      "type": "string"
+    },
+    "rooms_ar": {
+      "type": "string"
+    },
+    "rooms_en": {
+      "type": "string"
+    },
+    "has_parking": {
+      "type": "boolean"
+    },
+    "procedure_area": {
+      "type": "string"
+    },
+    "actual_worth": {
+      "type": "string"
+    },
+    "meter_sale_price": {
+      "type": "string"
+    },
+    "rent_value": {
+      "type": "string"
+    },
+    "meter_rent_price": {
+      "type": "string"
+    },
+    "no_of_parties_role_1": {
+      "type": "string"
+    },
+    "no_of_parties_role_2": {
+      "type": "string"
+    },
+    "no_of_parties_role_3": {
+      "type": "string"
+    }
+  }
+}
