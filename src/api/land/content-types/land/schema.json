@@ -1,0 +1,112 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lands",
+  "info": {
+    "singularName": "land",
+    "pluralName": "lands",
+    "displayName": "Lands"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "property_id": {
+      "type": "biginteger",
+      "unique": true
+    },
+    "area_id": {
+      "type": "biginteger",
+      "unique": true
+    },
+    "zone_id": {
+      "type": "biginteger",
+      "unique": true
+    },
+    "area_name_ar": {
+      "type": "string"
+    },
+    "area_name_en": {
+      "type": "string"
+    },
+    "land_number": {
+      "type": "string"
+    },
+    "land_sub_number": {
+      "type": "string"
+    },
+    "actual_area": {
+      "type": "string"
+    },
+    "property_type_id": {
+      "type": "biginteger",
+      "unique": true
+    },
+    "property_type_ar": {
+      "type": "string"
+    },
+    "property_type_en": {
+      "type": "string"
+    },
+    "property_sub_type_id": {
+      "type": "biginteger"
+    },
+    "property_sub_type_ar": {
+      "type": "string"
+    },
+    "property_sub_type_en": {
+      "type": "string"
+    },
+    "munc_zip_code": {
+      "type": "string"
+    },
+    "munc_number": {
+      "type": "string"
+    },
+    "parcel_id": {
+      "type": "biginteger"
+    },
+    "is_free_hold": {
+      "type": "boolean"
+    },
+    "is_registered": {
+      "type": "boolean"
+    },
+    "pre_registration_number": {
+      "type": "string"
+    },
+    "separated_from": {
+      "type": "string"
+    },
+    "separated_reference": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "biginteger"
+    },
+    "project_name_ar": {
+      "type": "string"
+    },
+    "project_name_en": {
+      "type": "string"
+    },
+    "master_project_id": {
+      "type": "biginteger"
+    },
+    "master_project_en": {
+      "type": "string"
+    },
+    "master_project_ar": {
+      "type": "string"
+    },
+    "land_type_id": {
+      "type": "biginteger"
+    },
+    "land_type_ar": {
+      "type": "string"
+    },
+    "land_type_en": {
+      "type": "string"
+    }
+  }
+}
