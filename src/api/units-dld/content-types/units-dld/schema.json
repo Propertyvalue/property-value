@@ -4,7 +4,8 @@
   "info": {
     "singularName": "units-dld",
     "pluralName": "units-dlds",
-    "displayName": "Units_dld"
+    "displayName": "Units_dld",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,13 +13,13 @@
   "pluginOptions": {},
   "attributes": {
     "property_id": {
-      "type": "biginteger"
+      "type": "string"
     },
     "area_id": {
-      "type": "biginteger"
+      "type": "string"
     },
     "zone_id": {
-      "type": "biginteger"
+      "type": "string"
     },
     "area_name_ar": {
       "type": "string"
@@ -42,7 +43,7 @@
       "type": "string"
     },
     "unit_parking_number": {
-      "type": "string"
+      "type": "text"
     },
     "parking_allocation_type": {
       "type": "string"
@@ -75,7 +76,7 @@
       "type": "string"
     },
     "property_type_id": {
-      "type": "biginteger"
+      "type": "string"
     },
     "property_type_ar": {
       "type": "string"
@@ -84,7 +85,7 @@
       "type": "string"
     },
     "property_sub_type_id": {
-      "type": "biginteger"
+      "type": "string"
     },
     "property_sub_type_ar": {
       "type": "string"
@@ -93,13 +94,13 @@
       "type": "string"
     },
     "parent_property_id": {
-      "type": "biginteger"
+      "type": "string"
     },
     "grandparent_property_id": {
-      "type": "biginteger"
+      "type": "string"
     },
     "creation_date": {
-      "type": "datetime"
+      "type": "string"
     },
     "munc_zip_code": {
       "type": "string"
@@ -108,22 +109,22 @@
       "type": "string"
     },
     "parcel_id": {
-      "type": "biginteger"
+      "type": "string"
     },
     "is_free_hold": {
-      "type": "boolean"
+      "type": "string"
     },
     "is_lease_hold": {
-      "type": "boolean"
+      "type": "string"
     },
     "is_registered": {
-      "type": "boolean"
+      "type": "string"
     },
     "pre_registration_number": {
       "type": "string"
     },
     "master_project_id": {
-      "type": "biginteger"
+      "type": "string"
     },
     "master_project_en": {
       "type": "string"
@@ -132,7 +133,7 @@
       "type": "string"
     },
     "project_id": {
-      "type": "biginteger"
+      "type": "string"
     },
     "project_name_ar": {
       "type": "string"
@@ -141,7 +142,7 @@
       "type": "string"
     },
     "land_type_id": {
-      "type": "biginteger"
+      "type": "string"
     },
     "land_type_ar": {
       "type": "string"
