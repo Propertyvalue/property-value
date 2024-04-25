@@ -843,6 +843,36 @@ export interface ApiBuildingBuilding extends Schema.CollectionType {
   };
 }
 
+export interface ApiIndexMeiliIndexMeili extends Schema.CollectionType {
+  collectionName: 'index_meilis';
+  info: {
+    singularName: 'index-meili';
+    pluralName: 'index-meilis';
+    displayName: 'index-meili';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    index: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::index-meili.index-meili',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::index-meili.index-meili',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLandLand extends Schema.CollectionType {
   collectionName: 'lands';
   info: {
@@ -938,6 +968,36 @@ export interface ApiLocationLocation extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::location.location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiToolkitToolkit extends Schema.CollectionType {
+  collectionName: 'toolkits';
+  info: {
+    singularName: 'toolkit';
+    pluralName: 'toolkits';
+    displayName: 'toolkit';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    toolkit: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::toolkit.toolkit',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::toolkit.toolkit',
       'oneToOne',
       'admin::user'
     > &
@@ -1165,8 +1225,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::building.building': ApiBuildingBuilding;
+      'api::index-meili.index-meili': ApiIndexMeiliIndexMeili;
       'api::land.land': ApiLandLand;
       'api::location.location': ApiLocationLocation;
+      'api::toolkit.toolkit': ApiToolkitToolkit;
       'api::transaction.transaction': ApiTransactionTransaction;
       'api::unit.unit': ApiUnitUnit;
       'api::units-dld.units-dld': ApiUnitsDldUnitsDld;

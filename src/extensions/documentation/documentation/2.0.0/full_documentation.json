@@ -1,0 +1,3271 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "2.0.0",
+    "title": "Property Value API",
+    "description": "The Property Value API provides access to comprehensive data on property values, offering valuable insights for real estate professionals, investors, and individuals interested in property valuation in the United Arab Emirates (UAE).",
+    "contact": {
+      "email": "info@propertyvalue.ae"
+    },
+    "x-generation-date": "2024-03-22T11:40:08.358Z"
+  },
+  "x-strapi-config": {
+    "path": "/documentation",
+    "plugins": [
+      "upload",
+      "users-permissions"
+    ]
+  },
+  "servers": [
+    {
+      "url": "http://localhost:1337/api",
+      "description": "Development server"
+    }
+  ],
+  "externalDocs": {
+    "description": "Find out more",
+    "url": "https://docs.strapi.io/developer-docs/latest/getting-started/introduction.html"
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "data": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            ]
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "details": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "BuildingRequest": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "bld_levels": {
+                "type": "string"
+              },
+              "shops": {
+                "type": "string"
+              },
+              "flats": {
+                "type": "string"
+              },
+              "offices": {
+                "type": "string"
+              },
+              "swimming_pools": {
+                "type": "string"
+              },
+              "elevators": {
+                "type": "string"
+              },
+              "actual_area": {
+                "type": "string"
+              },
+              "property_type_ar": {
+                "type": "string"
+              },
+              "property_type_en": {
+                "type": "string"
+              },
+              "property_sub_type_ar": {
+                "type": "string"
+              },
+              "property_sub_type_en": {
+                "type": "string"
+              },
+              "area_name_ar": {
+                "type": "string"
+              },
+              "area_name_en": {
+                "type": "string"
+              },
+              "land_number": {
+                "type": "string"
+              },
+              "land_sub_number": {
+                "type": "string"
+              },
+              "building_number": {
+                "type": "string"
+              },
+              "common_area": {
+                "type": "string"
+              },
+              "actual_common_area": {
+                "type": "string"
+              },
+              "floors": {
+                "type": "string"
+              },
+              "rooms": {
+                "type": "string"
+              },
+              "rooms_ar": {
+                "type": "string"
+              },
+              "rooms_en": {
+                "type": "string"
+              },
+              "car_parks": {
+                "type": "string"
+              },
+              "built_up_area": {
+                "type": "string"
+              },
+              "is_lease_hold": {
+                "type": "string"
+              },
+              "is_registered": {
+                "type": "string"
+              },
+              "pre_registration_number": {
+                "type": "string"
+              },
+              "master_project_en": {
+                "type": "string"
+              },
+              "master_project_ar": {
+                "type": "string"
+              },
+              "project_name_ar": {
+                "type": "string"
+              },
+              "project_name_en": {
+                "type": "string"
+              },
+              "land_type_ar": {
+                "type": "string"
+              },
+              "land_type_en": {
+                "type": "string"
+              },
+              "property_type_id": {
+                "type": "string"
+              },
+              "property_sub_type_id": {
+                "type": "string"
+              },
+              "land_type_id": {
+                "type": "string"
+              },
+              "parent_property_id": {
+                "type": "string"
+              },
+              "creation_date": {
+                "type": "string"
+              },
+              "is_free_hold": {
+                "type": "string"
+              },
+              "zone_id": {
+                "type": "string"
+              },
+              "property_id": {
+                "type": "string"
+              },
+              "parcel_id": {
+                "type": "string"
+              },
+              "area_id": {
+                "type": "string"
+              },
+              "master_project_id": {
+                "type": "string"
+              },
+              "project_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "BuildingListResponseDataItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/Building"
+          }
+        }
+      },
+      "BuildingListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BuildingListResponseDataItem"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "minimum": 25
+                  },
+                  "pageCount": {
+                    "type": "integer",
+                    "maximum": 1
+                  },
+                  "total": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Building": {
+        "type": "object",
+        "properties": {
+          "bld_levels": {
+            "type": "string"
+          },
+          "shops": {
+            "type": "string"
+          },
+          "flats": {
+            "type": "string"
+          },
+          "offices": {
+            "type": "string"
+          },
+          "swimming_pools": {
+            "type": "string"
+          },
+          "elevators": {
+            "type": "string"
+          },
+          "actual_area": {
+            "type": "string"
+          },
+          "property_type_ar": {
+            "type": "string"
+          },
+          "property_type_en": {
+            "type": "string"
+          },
+          "property_sub_type_ar": {
+            "type": "string"
+          },
+          "property_sub_type_en": {
+            "type": "string"
+          },
+          "area_name_ar": {
+            "type": "string"
+          },
+          "area_name_en": {
+            "type": "string"
+          },
+          "land_number": {
+            "type": "string"
+          },
+          "land_sub_number": {
+            "type": "string"
+          },
+          "building_number": {
+            "type": "string"
+          },
+          "common_area": {
+            "type": "string"
+          },
+          "actual_common_area": {
+            "type": "string"
+          },
+          "floors": {
+            "type": "string"
+          },
+          "rooms": {
+            "type": "string"
+          },
+          "rooms_ar": {
+            "type": "string"
+          },
+          "rooms_en": {
+            "type": "string"
+          },
+          "car_parks": {
+            "type": "string"
+          },
+          "built_up_area": {
+            "type": "string"
+          },
+          "is_lease_hold": {
+            "type": "string"
+          },
+          "is_registered": {
+            "type": "string"
+          },
+          "pre_registration_number": {
+            "type": "string"
+          },
+          "master_project_en": {
+            "type": "string"
+          },
+          "master_project_ar": {
+            "type": "string"
+          },
+          "project_name_ar": {
+            "type": "string"
+          },
+          "project_name_en": {
+            "type": "string"
+          },
+          "land_type_ar": {
+            "type": "string"
+          },
+          "land_type_en": {
+            "type": "string"
+          },
+          "property_type_id": {
+            "type": "string"
+          },
+          "property_sub_type_id": {
+            "type": "string"
+          },
+          "land_type_id": {
+            "type": "string"
+          },
+          "parent_property_id": {
+            "type": "string"
+          },
+          "creation_date": {
+            "type": "string"
+          },
+          "is_free_hold": {
+            "type": "string"
+          },
+          "zone_id": {
+            "type": "string"
+          },
+          "property_id": {
+            "type": "string"
+          },
+          "parcel_id": {
+            "type": "string"
+          },
+          "area_id": {
+            "type": "string"
+          },
+          "master_project_id": {
+            "type": "string"
+          },
+          "project_id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "firstname": {
+                        "type": "string"
+                      },
+                      "lastname": {
+                        "type": "string"
+                      },
+                      "username": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email"
+                      },
+                      "resetPasswordToken": {
+                        "type": "string"
+                      },
+                      "registrationToken": {
+                        "type": "string"
+                      },
+                      "isActive": {
+                        "type": "boolean"
+                      },
+                      "roles": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "code": {
+                                      "type": "string"
+                                    },
+                                    "description": {
+                                      "type": "string"
+                                    },
+                                    "users": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "number"
+                                              },
+                                              "attributes": {
+                                                "type": "object",
+                                                "properties": {}
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "permissions": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "number"
+                                              },
+                                              "attributes": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "action": {
+                                                    "type": "string"
+                                                  },
+                                                  "actionParameters": {},
+                                                  "subject": {
+                                                    "type": "string"
+                                                  },
+                                                  "properties": {},
+                                                  "conditions": {},
+                                                  "role": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "createdAt": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                  },
+                                                  "updatedAt": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                  },
+                                                  "createdBy": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "updatedBy": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "createdAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
+                                    "createdBy": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "updatedBy": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "blocked": {
+                        "type": "boolean"
+                      },
+                      "preferedLanguage": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "createdBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "updatedBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "updatedBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "BuildingResponseDataObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/Building"
+          }
+        }
+      },
+      "BuildingResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BuildingResponseDataObject"
+          },
+          "meta": {
+            "type": "object"
+          }
+        }
+      },
+      "TransactionRequest": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "transaction_id": {
+                "type": "string"
+              },
+              "procedure_id": {
+                "type": "string"
+              },
+              "trans_group_id": {
+                "type": "string"
+              },
+              "trans_group_ar": {
+                "type": "string"
+              },
+              "trans_group_en": {
+                "type": "string"
+              },
+              "procedure_name_ar": {
+                "type": "string"
+              },
+              "procedure_name_en": {
+                "type": "string"
+              },
+              "instance_date": {
+                "type": "string"
+              },
+              "property_type_id": {
+                "type": "string"
+              },
+              "property_type_ar": {
+                "type": "string"
+              },
+              "property_type_en": {
+                "type": "string"
+              },
+              "property_sub_type_id": {
+                "type": "string"
+              },
+              "property_sub_type_ar": {
+                "type": "string"
+              },
+              "property_sub_type_en": {
+                "type": "string"
+              },
+              "property_usage_ar": {
+                "type": "string"
+              },
+              "property_usage_en": {
+                "type": "string"
+              },
+              "reg_type_id": {
+                "type": "string"
+              },
+              "reg_type_ar": {
+                "type": "string"
+              },
+              "reg_type_en": {
+                "type": "string"
+              },
+              "area_id": {
+                "type": "string"
+              },
+              "area_name_ar": {
+                "type": "string"
+              },
+              "area_name_en": {
+                "type": "string"
+              },
+              "building_name_ar": {
+                "type": "string"
+              },
+              "building_name_en": {
+                "type": "string"
+              },
+              "project_number": {
+                "type": "string"
+              },
+              "project_name_ar": {
+                "type": "string"
+              },
+              "project_name_en": {
+                "type": "string"
+              },
+              "master_project_en": {
+                "type": "string"
+              },
+              "master_project_ar": {
+                "type": "string"
+              },
+              "nearest_landmark_ar": {
+                "type": "string"
+              },
+              "nearest_landmark_en": {
+                "type": "string"
+              },
+              "nearest_metro_ar": {
+                "type": "string"
+              },
+              "nearest_metro_en": {
+                "type": "string"
+              },
+              "nearest_mall_ar": {
+                "type": "string"
+              },
+              "nearest_mall_en": {
+                "type": "string"
+              },
+              "rooms_ar": {
+                "type": "string"
+              },
+              "rooms_en": {
+                "type": "string"
+              },
+              "has_parking": {
+                "type": "string"
+              },
+              "procedure_area": {
+                "type": "string"
+              },
+              "actual_worth": {
+                "type": "string"
+              },
+              "meter_sale_price": {
+                "type": "string"
+              },
+              "rent_value": {
+                "type": "string"
+              },
+              "meter_rent_price": {
+                "type": "string"
+              },
+              "no_of_parties_role_1": {
+                "type": "string"
+              },
+              "no_of_parties_role_2": {
+                "type": "string"
+              },
+              "no_of_parties_role_3": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "TransactionListResponseDataItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/Transaction"
+          }
+        }
+      },
+      "TransactionListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionListResponseDataItem"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "minimum": 25
+                  },
+                  "pageCount": {
+                    "type": "integer",
+                    "maximum": 1
+                  },
+                  "total": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "transaction_id": {
+            "type": "string"
+          },
+          "procedure_id": {
+            "type": "string"
+          },
+          "trans_group_id": {
+            "type": "string"
+          },
+          "trans_group_ar": {
+            "type": "string"
+          },
+          "trans_group_en": {
+            "type": "string"
+          },
+          "procedure_name_ar": {
+            "type": "string"
+          },
+          "procedure_name_en": {
+            "type": "string"
+          },
+          "instance_date": {
+            "type": "string"
+          },
+          "property_type_id": {
+            "type": "string"
+          },
+          "property_type_ar": {
+            "type": "string"
+          },
+          "property_type_en": {
+            "type": "string"
+          },
+          "property_sub_type_id": {
+            "type": "string"
+          },
+          "property_sub_type_ar": {
+            "type": "string"
+          },
+          "property_sub_type_en": {
+            "type": "string"
+          },
+          "property_usage_ar": {
+            "type": "string"
+          },
+          "property_usage_en": {
+            "type": "string"
+          },
+          "reg_type_id": {
+            "type": "string"
+          },
+          "reg_type_ar": {
+            "type": "string"
+          },
+          "reg_type_en": {
+            "type": "string"
+          },
+          "area_id": {
+            "type": "string"
+          },
+          "area_name_ar": {
+            "type": "string"
+          },
+          "area_name_en": {
+            "type": "string"
+          },
+          "building_name_ar": {
+            "type": "string"
+          },
+          "building_name_en": {
+            "type": "string"
+          },
+          "project_number": {
+            "type": "string"
+          },
+          "project_name_ar": {
+            "type": "string"
+          },
+          "project_name_en": {
+            "type": "string"
+          },
+          "master_project_en": {
+            "type": "string"
+          },
+          "master_project_ar": {
+            "type": "string"
+          },
+          "nearest_landmark_ar": {
+            "type": "string"
+          },
+          "nearest_landmark_en": {
+            "type": "string"
+          },
+          "nearest_metro_ar": {
+            "type": "string"
+          },
+          "nearest_metro_en": {
+            "type": "string"
+          },
+          "nearest_mall_ar": {
+            "type": "string"
+          },
+          "nearest_mall_en": {
+            "type": "string"
+          },
+          "rooms_ar": {
+            "type": "string"
+          },
+          "rooms_en": {
+            "type": "string"
+          },
+          "has_parking": {
+            "type": "string"
+          },
+          "procedure_area": {
+            "type": "string"
+          },
+          "actual_worth": {
+            "type": "string"
+          },
+          "meter_sale_price": {
+            "type": "string"
+          },
+          "rent_value": {
+            "type": "string"
+          },
+          "meter_rent_price": {
+            "type": "string"
+          },
+          "no_of_parties_role_1": {
+            "type": "string"
+          },
+          "no_of_parties_role_2": {
+            "type": "string"
+          },
+          "no_of_parties_role_3": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "firstname": {
+                        "type": "string"
+                      },
+                      "lastname": {
+                        "type": "string"
+                      },
+                      "username": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email"
+                      },
+                      "resetPasswordToken": {
+                        "type": "string"
+                      },
+                      "registrationToken": {
+                        "type": "string"
+                      },
+                      "isActive": {
+                        "type": "boolean"
+                      },
+                      "roles": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "code": {
+                                      "type": "string"
+                                    },
+                                    "description": {
+                                      "type": "string"
+                                    },
+                                    "users": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "number"
+                                              },
+                                              "attributes": {
+                                                "type": "object",
+                                                "properties": {}
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "permissions": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "number"
+                                              },
+                                              "attributes": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "action": {
+                                                    "type": "string"
+                                                  },
+                                                  "actionParameters": {},
+                                                  "subject": {
+                                                    "type": "string"
+                                                  },
+                                                  "properties": {},
+                                                  "conditions": {},
+                                                  "role": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "createdAt": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                  },
+                                                  "updatedAt": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                  },
+                                                  "createdBy": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "updatedBy": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "createdAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
+                                    "createdBy": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "updatedBy": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "blocked": {
+                        "type": "boolean"
+                      },
+                      "preferedLanguage": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "createdBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "updatedBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "updatedBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "TransactionResponseDataObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/Transaction"
+          }
+        }
+      },
+      "TransactionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TransactionResponseDataObject"
+          },
+          "meta": {
+            "type": "object"
+          }
+        }
+      },
+      "UnitRequest": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "arabic_community": {
+                "type": "string"
+              },
+              "bathrooms": {
+                "type": "string"
+              },
+              "bedrooms": {
+                "type": "string"
+              },
+              "built_up_area_sqft": {
+                "type": "string"
+              },
+              "built_up_area_sqm": {
+                "type": "string"
+              },
+              "developer_name": {
+                "type": "string"
+              },
+              "emirate": {
+                "type": "string"
+              },
+              "floor": {
+                "type": "string"
+              },
+              "latitude": {
+                "type": "number",
+                "format": "float"
+              },
+              "longitude": {
+                "type": "number",
+                "format": "float"
+              },
+              "master_development": {
+                "type": "string"
+              },
+              "no_of_parking": {
+                "type": "string"
+              },
+              "parking": {
+                "type": "string"
+              },
+              "plot_size_sqft": {
+                "type": "string"
+              },
+              "plot_size_sqm": {
+                "type": "string"
+              },
+              "property_id": {
+                "type": "string",
+                "pattern": "^\\d*$",
+                "example": "123456789"
+              },
+              "property_new_address": {
+                "type": "string"
+              },
+              "property_type_id": {
+                "type": "string",
+                "pattern": "^\\d*$",
+                "example": "123456789"
+              },
+              "sub_location_1": {
+                "type": "string"
+              },
+              "sub_location_2": {
+                "type": "string"
+              },
+              "sub_location_3": {
+                "type": "string"
+              },
+              "sub_location_4": {
+                "type": "string"
+              },
+              "sub_title": {
+                "type": "string"
+              },
+              "total_service_charges": {
+                "type": "string"
+              },
+              "unit_number": {
+                "type": "string"
+              },
+              "views": {
+                "type": "string"
+              },
+              "location_id": {
+                "type": "string",
+                "pattern": "^\\d*$",
+                "example": "123456789"
+              },
+              "ref_location_id": {
+                "type": "string",
+                "pattern": "^\\d*$",
+                "example": "123456789"
+              }
+            }
+          }
+        }
+      },
+      "UnitListResponseDataItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/Unit"
+          }
+        }
+      },
+      "UnitListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UnitListResponseDataItem"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "minimum": 25
+                  },
+                  "pageCount": {
+                    "type": "integer",
+                    "maximum": 1
+                  },
+                  "total": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Unit": {
+        "type": "object",
+        "properties": {
+          "arabic_community": {
+            "type": "string"
+          },
+          "bathrooms": {
+            "type": "string"
+          },
+          "bedrooms": {
+            "type": "string"
+          },
+          "built_up_area_sqft": {
+            "type": "string"
+          },
+          "built_up_area_sqm": {
+            "type": "string"
+          },
+          "developer_name": {
+            "type": "string"
+          },
+          "emirate": {
+            "type": "string"
+          },
+          "floor": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "float"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "float"
+          },
+          "master_development": {
+            "type": "string"
+          },
+          "no_of_parking": {
+            "type": "string"
+          },
+          "parking": {
+            "type": "string"
+          },
+          "plot_size_sqft": {
+            "type": "string"
+          },
+          "plot_size_sqm": {
+            "type": "string"
+          },
+          "property_id": {
+            "type": "string",
+            "pattern": "^\\d*$",
+            "example": "123456789"
+          },
+          "property_new_address": {
+            "type": "string"
+          },
+          "property_type_id": {
+            "type": "string",
+            "pattern": "^\\d*$",
+            "example": "123456789"
+          },
+          "sub_location_1": {
+            "type": "string"
+          },
+          "sub_location_2": {
+            "type": "string"
+          },
+          "sub_location_3": {
+            "type": "string"
+          },
+          "sub_location_4": {
+            "type": "string"
+          },
+          "sub_title": {
+            "type": "string"
+          },
+          "total_service_charges": {
+            "type": "string"
+          },
+          "unit_number": {
+            "type": "string"
+          },
+          "views": {
+            "type": "string"
+          },
+          "location_id": {
+            "type": "string",
+            "pattern": "^\\d*$",
+            "example": "123456789"
+          },
+          "ref_location_id": {
+            "type": "string",
+            "pattern": "^\\d*$",
+            "example": "123456789"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "firstname": {
+                        "type": "string"
+                      },
+                      "lastname": {
+                        "type": "string"
+                      },
+                      "username": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email"
+                      },
+                      "resetPasswordToken": {
+                        "type": "string"
+                      },
+                      "registrationToken": {
+                        "type": "string"
+                      },
+                      "isActive": {
+                        "type": "boolean"
+                      },
+                      "roles": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "code": {
+                                      "type": "string"
+                                    },
+                                    "description": {
+                                      "type": "string"
+                                    },
+                                    "users": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "number"
+                                              },
+                                              "attributes": {
+                                                "type": "object",
+                                                "properties": {}
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "permissions": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "number"
+                                              },
+                                              "attributes": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "action": {
+                                                    "type": "string"
+                                                  },
+                                                  "actionParameters": {},
+                                                  "subject": {
+                                                    "type": "string"
+                                                  },
+                                                  "properties": {},
+                                                  "conditions": {},
+                                                  "role": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "createdAt": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                  },
+                                                  "updatedAt": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                  },
+                                                  "createdBy": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "updatedBy": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "createdAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
+                                    "createdBy": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "updatedBy": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "blocked": {
+                        "type": "boolean"
+                      },
+                      "preferedLanguage": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "createdBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "updatedBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "updatedBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UnitResponseDataObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/Unit"
+          }
+        }
+      },
+      "UnitResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/UnitResponseDataObject"
+          },
+          "meta": {
+            "type": "object"
+          }
+        }
+      },
+      "UnitsDldRequest": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "property_id": {
+                "type": "string"
+              },
+              "area_id": {
+                "type": "string"
+              },
+              "zone_id": {
+                "type": "string"
+              },
+              "area_name_ar": {
+                "type": "string"
+              },
+              "area_name_en": {
+                "type": "string"
+              },
+              "land_number": {
+                "type": "string"
+              },
+              "land_sub_number": {
+                "type": "string"
+              },
+              "building_number": {
+                "type": "string"
+              },
+              "unit_number": {
+                "type": "string"
+              },
+              "unit_balcony_area": {
+                "type": "string"
+              },
+              "unit_parking_number": {
+                "type": "string"
+              },
+              "parking_allocation_type": {
+                "type": "string"
+              },
+              "parking_allocation_type_ar": {
+                "type": "string"
+              },
+              "parking_allocation_type_en": {
+                "type": "string"
+              },
+              "common_area": {
+                "type": "string"
+              },
+              "actual_common_area": {
+                "type": "string"
+              },
+              "floor": {
+                "type": "string"
+              },
+              "rooms": {
+                "type": "string"
+              },
+              "rooms_ar": {
+                "type": "string"
+              },
+              "rooms_en": {
+                "type": "string"
+              },
+              "actual_area": {
+                "type": "string"
+              },
+              "property_type_id": {
+                "type": "string"
+              },
+              "property_type_ar": {
+                "type": "string"
+              },
+              "property_type_en": {
+                "type": "string"
+              },
+              "property_sub_type_id": {
+                "type": "string"
+              },
+              "property_sub_type_ar": {
+                "type": "string"
+              },
+              "property_sub_type_en": {
+                "type": "string"
+              },
+              "parent_property_id": {
+                "type": "string"
+              },
+              "grandparent_property_id": {
+                "type": "string"
+              },
+              "creation_date": {
+                "type": "string"
+              },
+              "munc_zip_code": {
+                "type": "string"
+              },
+              "munc_number": {
+                "type": "string"
+              },
+              "parcel_id": {
+                "type": "string"
+              },
+              "is_free_hold": {
+                "type": "string"
+              },
+              "is_lease_hold": {
+                "type": "string"
+              },
+              "is_registered": {
+                "type": "string"
+              },
+              "pre_registration_number": {
+                "type": "string"
+              },
+              "master_project_id": {
+                "type": "string"
+              },
+              "master_project_en": {
+                "type": "string"
+              },
+              "master_project_ar": {
+                "type": "string"
+              },
+              "project_id": {
+                "type": "string"
+              },
+              "project_name_ar": {
+                "type": "string"
+              },
+              "project_name_en": {
+                "type": "string"
+              },
+              "land_type_id": {
+                "type": "string"
+              },
+              "land_type_ar": {
+                "type": "string"
+              },
+              "land_type_en": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "UnitsDldListResponseDataItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/UnitsDld"
+          }
+        }
+      },
+      "UnitsDldListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UnitsDldListResponseDataItem"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "minimum": 25
+                  },
+                  "pageCount": {
+                    "type": "integer",
+                    "maximum": 1
+                  },
+                  "total": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UnitsDld": {
+        "type": "object",
+        "properties": {
+          "property_id": {
+            "type": "string"
+          },
+          "area_id": {
+            "type": "string"
+          },
+          "zone_id": {
+            "type": "string"
+          },
+          "area_name_ar": {
+            "type": "string"
+          },
+          "area_name_en": {
+            "type": "string"
+          },
+          "land_number": {
+            "type": "string"
+          },
+          "land_sub_number": {
+            "type": "string"
+          },
+          "building_number": {
+            "type": "string"
+          },
+          "unit_number": {
+            "type": "string"
+          },
+          "unit_balcony_area": {
+            "type": "string"
+          },
+          "unit_parking_number": {
+            "type": "string"
+          },
+          "parking_allocation_type": {
+            "type": "string"
+          },
+          "parking_allocation_type_ar": {
+            "type": "string"
+          },
+          "parking_allocation_type_en": {
+            "type": "string"
+          },
+          "common_area": {
+            "type": "string"
+          },
+          "actual_common_area": {
+            "type": "string"
+          },
+          "floor": {
+            "type": "string"
+          },
+          "rooms": {
+            "type": "string"
+          },
+          "rooms_ar": {
+            "type": "string"
+          },
+          "rooms_en": {
+            "type": "string"
+          },
+          "actual_area": {
+            "type": "string"
+          },
+          "property_type_id": {
+            "type": "string"
+          },
+          "property_type_ar": {
+            "type": "string"
+          },
+          "property_type_en": {
+            "type": "string"
+          },
+          "property_sub_type_id": {
+            "type": "string"
+          },
+          "property_sub_type_ar": {
+            "type": "string"
+          },
+          "property_sub_type_en": {
+            "type": "string"
+          },
+          "parent_property_id": {
+            "type": "string"
+          },
+          "grandparent_property_id": {
+            "type": "string"
+          },
+          "creation_date": {
+            "type": "string"
+          },
+          "munc_zip_code": {
+            "type": "string"
+          },
+          "munc_number": {
+            "type": "string"
+          },
+          "parcel_id": {
+            "type": "string"
+          },
+          "is_free_hold": {
+            "type": "string"
+          },
+          "is_lease_hold": {
+            "type": "string"
+          },
+          "is_registered": {
+            "type": "string"
+          },
+          "pre_registration_number": {
+            "type": "string"
+          },
+          "master_project_id": {
+            "type": "string"
+          },
+          "master_project_en": {
+            "type": "string"
+          },
+          "master_project_ar": {
+            "type": "string"
+          },
+          "project_id": {
+            "type": "string"
+          },
+          "project_name_ar": {
+            "type": "string"
+          },
+          "project_name_en": {
+            "type": "string"
+          },
+          "land_type_id": {
+            "type": "string"
+          },
+          "land_type_ar": {
+            "type": "string"
+          },
+          "land_type_en": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "firstname": {
+                        "type": "string"
+                      },
+                      "lastname": {
+                        "type": "string"
+                      },
+                      "username": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email"
+                      },
+                      "resetPasswordToken": {
+                        "type": "string"
+                      },
+                      "registrationToken": {
+                        "type": "string"
+                      },
+                      "isActive": {
+                        "type": "boolean"
+                      },
+                      "roles": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "code": {
+                                      "type": "string"
+                                    },
+                                    "description": {
+                                      "type": "string"
+                                    },
+                                    "users": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "number"
+                                              },
+                                              "attributes": {
+                                                "type": "object",
+                                                "properties": {}
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "permissions": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "number"
+                                              },
+                                              "attributes": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "action": {
+                                                    "type": "string"
+                                                  },
+                                                  "actionParameters": {},
+                                                  "subject": {
+                                                    "type": "string"
+                                                  },
+                                                  "properties": {},
+                                                  "conditions": {},
+                                                  "role": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "createdAt": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                  },
+                                                  "updatedAt": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                  },
+                                                  "createdBy": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "updatedBy": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "createdAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
+                                    "createdBy": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "updatedBy": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "blocked": {
+                        "type": "boolean"
+                      },
+                      "preferedLanguage": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "createdBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "updatedBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "updatedBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UnitsDldResponseDataObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/UnitsDld"
+          }
+        }
+      },
+      "UnitsDldResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/UnitsDldResponseDataObject"
+          },
+          "meta": {
+            "type": "object"
+          }
+        }
+      },
+      "GoogleAPIResponse":{
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "string",
+                "description": "The address of the property."
+              },
+              "lat": {
+                "type": "number",
+                "description": "The latitude coordinate of the property."
+              },
+              "lng": {
+                "type": "number",
+                "description": "The longitude coordinate of the property."
+              },
+              "nearbyTransit": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "vicinity": { "type": "string" },
+                    "type": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    },
+                    "geometry": {
+                      "type": "object",
+                      "properties": {
+                        "lat": { "type": "number" },
+                        "lng": { "type": "number" }
+                      }
+                    }
+                  }
+                },
+                "description": "An array of nearby transit stations."
+              },
+              "nearbySchools": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "vicinity": { "type": "string" },
+                    "type": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    },
+                    "geometry": {
+                      "type": "object",
+                      "properties": {
+                        "lat": { "type": "number" },
+                        "lng": { "type": "number" }
+                      }
+                    }
+                  }
+                },
+                "description": "An array of nearby schools."
+              }
+            }
+          }
+        }
+      }      
+    },
+    "requestBodies": {
+      "Users-Permissions-RoleRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "permissions": {
+                  "$ref": "#/components/schemas/Users-Permissions-PermissionsTree"
+                }
+              }
+            },
+            "example": {
+              "name": "foo",
+              "description": "role foo",
+              "permissions": {
+                "api::content-type.content-type": {
+                  "controllers": {
+                    "controllerA": {
+                      "find": {
+                        "enabled": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/buildings/{area_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BuildingResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Property Buildings"
+        ],
+        "parameters": [
+          {
+            "name": "area_id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "building_number",
+            "in": "query",
+            "description": "Provide and Extra building id to query all building with this id",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "master_project_id",
+            "in": "query",
+            "description": "Provide a master project id to filter on master projects",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "query",
+            "description": "Provide a project id to filter on projects",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "operationId": "get/buildings/{area_id}"
+      }
+    },
+    "/transactions/{area_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Property Transactions"
+        ],
+        "parameters": [
+          {
+            "name": "area_id",
+            "in": "path",
+            "description": "Find all transactions per area id",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "get/transactions/{area_id}"
+      }
+    },
+    "/transactions/market-insights": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Property Transactions"
+        ],
+        "parameters": [
+          {
+            "name":"query",
+            "in": "query",
+            "description": "Find market insights in a specific master development area with a MeiliSearch engine running in the background, with a list of recent transactions (30 days) for only Residental Existing ones",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "get/transactions/market-insights"
+      }
+    },
+    "/units-dlds": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnitsDldResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Property Units"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "A Search engine working with MelliSearch to list all Properties in this address provided in the query search in done on master project unit number and project name.",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "get/units-dlds"
+      }
+    },
+    "/units-dlds/{area_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnitsDldResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Property Units"
+        ],
+        "parameters": [
+          {
+            "name": "area_id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "operationId": "get/units-dlds/{area_id}"
+      }
+    },
+    "/toolkit/map": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoogleAPIResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Property Google APIs"
+        ],
+        "parameters": [
+          {
+            "name": "placename",
+            "in": "query",
+            "description": "Providing a tower name or a project name with the emirate you will get the long and the lat for this place from google maps with a list of nearby transit and schools.",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "emirate",
+            "in": "query",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
