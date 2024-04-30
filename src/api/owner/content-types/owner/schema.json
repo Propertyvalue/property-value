@@ -1,0 +1,115 @@
+{
+  "kind": "collectionType",
+  "collectionName": "owners",
+  "info": {
+    "singularName": "owner",
+    "pluralName": "owners",
+    "displayName": "owners",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "index": {
+      "type": "string"
+    },
+    "source_file": {
+      "type": "string"
+    },
+    "p_number": {
+      "type": "string"
+    },
+    "phase": {
+      "type": "string"
+    },
+    "area": {
+      "type": "string"
+    },
+    "plot_number": {
+      "type": "string"
+    },
+    "building_name": {
+      "type": "string"
+    },
+    "registration_number": {
+      "type": "string"
+    },
+    "villa_number": {
+      "type": "string"
+    },
+    "flat_number": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "phone2": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "mobile": {
+      "type": "string"
+    },
+    "secondary_mobile": {
+      "type": "string"
+    },
+    "balcony_area": {
+      "type": "string"
+    },
+    "parking_number": {
+      "type": "string"
+    },
+    "common_area": {
+      "type": "string"
+    },
+    "floor": {
+      "type": "string"
+    },
+    "rooms_description": {
+      "type": "string"
+    },
+    "levels": {
+      "type": "string"
+    },
+    "shops": {
+      "type": "string"
+    },
+    "flats": {
+      "type": "string"
+    },
+    "offices": {
+      "type": "string"
+    },
+    "age": {
+      "type": "string"
+    },
+    "actual_area": {
+      "type": "string"
+    },
+    "municipality_number": {
+      "type": "string"
+    },
+    "master_project": {
+      "type": "string"
+    },
+    "project": {
+      "type": "string"
+    },
+    "zip_code": {
+      "type": "string"
+    },
+    "registration_date": {
+      "type": "string"
+    },
+    "property_type": {
+      "type": "string"
+    }
+  }
+}

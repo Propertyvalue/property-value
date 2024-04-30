@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "index_meilis",
+  "info": {
+    "singularName": "index-meili",
+    "pluralName": "index-meilis",
+    "displayName": "index-meili"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "index": {
+      "type": "string"
+    }
+  }
+}
